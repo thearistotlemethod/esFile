@@ -74,18 +74,20 @@ int esFile_ReadDir(esFile_DirDescriptor *dp, esFile_FileInfo *fiOut)
             for (j = 0; j < dInfos[dp->did].sectorCapacity / ESFILE_FILENGTH; j++)
             {
                 memcpy(&fi, &buffer[j * ESFILE_FILENGTH], sizeof(esFile_FileInfo));
-                if (idx == dp->idx)
-                {
-                    if(fiOut)
-                        memcpy(fiOut, &fi, sizeof(esFile_FileInfo));
+                if(fi.name[0] != 0){
+                    if (idx == dp->idx)
+                    {
+                        if(fiOut)
+                            memcpy(fiOut, &fi, sizeof(esFile_FileInfo));
 
-                    dp->idx++;
+                        dp->idx++;
 
-                    i = 0x0FFFFFFF;
-                    rv = 0;
-                    break;
+                        i = 0x0FFFFFFF;
+                        rv = 0;
+                        break;
+                    }
+                    idx++;
                 }
-                idx++;
             }
         }
         else
