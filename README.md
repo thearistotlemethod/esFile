@@ -1,4 +1,5 @@
-# esFile File System Project
+# esFile
+File System for low-memory embedded systems
 
 ## Introduction
 Welcome to the esFile File System Project For Embedded Devices! This software is a file system implementation written in C that serves as an alternative to the FAT file system.
